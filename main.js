@@ -1,11 +1,16 @@
 var map = L.map('mapid').setView([28.619608,77.227002], 15);
 var src = document.querySelector("#src");
 var des = document.querySelector("#des");
+<<<<<<< HEAD
 var dist_deliver = document.querySelector("#dist_deliver");
 var cost_deliver = document.querySelector("#cost_deliver");
 
 var curr = -1;
 var flag1=0,flag2=0;
+=======
+var deliver = document.querySelector("#deliver");
+var curr = 0;
+>>>>>>> fef87f9144d2f651f0c615d88dae14a17cd60653
 
 //------------------- Adding Map Component -----------------------
 
@@ -68,6 +73,7 @@ var droneHouseIcon = L.icon({
 //L.control.scale().addTo(map);
 
 //---------------------- WareHouse Locations ----------------
+<<<<<<< HEAD
 var wareHouseLat = [];
 var wareHouseLong = []; 
 wareHouseLat[0] = 28.631200, wareHouseLong[0] = 77.223112; // 1 Connaught Place
@@ -86,6 +92,20 @@ L.marker([wareHouseLat[2],wareHouseLong[2]], {icon: droneHouseIcon}).addTo(map);
 L.marker([wareHouseLat[3],wareHouseLong[3]], {icon: droneHouseIcon}).addTo(map); // 
 L.marker([wareHouseLat[4],wareHouseLong[4]], {icon: droneHouseIcon}).addTo(map); // 
 L.marker([wareHouseLat[5],wareHouseLong[5]], {icon: droneHouseIcon}).addTo(map);
+=======
+
+var wareHouse1Lat = 28.628520, wareHouse1Long = 77.206917; //sacred heart
+var wareHouse2Lat = 28.613096, wareHouse2Long = 77.213689; // rajpath
+var wareHouse3Lat = 28.614550, wareHouse3Long = 77.242574; // bhairon marg
+var wareHouse4Lat = 28.624712, wareHouse4Long = 77.239307; // rajpath
+
+//--------------------------- Markers -------------------------
+
+L.marker([wareHouse1Lat,wareHouse1Long], {icon: droneHouseIcon}).addTo(map); // cp
+L.marker([wareHouse2Lat,wareHouse2Long], {icon: droneHouseIcon}).addTo(map); // 
+L.marker([wareHouse3Lat,wareHouse3Long], {icon: droneHouseIcon}).addTo(map); // 
+L.marker([wareHouse4Lat,wareHouse4Long], {icon: droneHouseIcon}).addTo(map); // 
+>>>>>>> fef87f9144d2f651f0c615d88dae14a17cd60653
 
 //---------------------- Distance Calculation ------------------
 
@@ -109,11 +129,15 @@ function toRadian(degree) {
     return degree*Math.PI/180;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> fef87f9144d2f651f0c615d88dae14a17cd60653
 //var distance = getDistance([drone1Lat, drone1Long], [drone2Lat, drone2Long]);
 
 //-------------------------- Drone Movement --------------------------------
 
+<<<<<<< HEAD
 /*function moveDrone(){
 	if(flag1==1 && flag2==1)
 	{
@@ -125,6 +149,15 @@ function toRadian(degree) {
 		flag1=0,flag2=0;
 	}
 }*/
+=======
+function moveDrone(){
+
+    var myMovingMarker = L.Marker.movingMarker([[sourceLat, sourceLong], [destinationLat, destinationLong]],
+        [4000],{icon: droneIcon}).addTo(map);
+    
+    myMovingMarker.start();
+}
+>>>>>>> fef87f9144d2f651f0c615d88dae14a17cd60653
 
 var sourceLat,sourceLong, destinationLat, destinationLong;
 
@@ -136,11 +169,19 @@ function getValues(e){
 
         L.marker([sourceLat,sourceLong], {icon: sourceIcon}).addTo(map); // 
     }
+<<<<<<< HEAD
     else if(curr == 1){ // for destination
         destinationLat = Number((e.latlng.lat).toFixed(4));
         destinationLong = Number((e.latlng.lng).toFixed(4));
 
 		L.marker([destinationLat,destinationLong], {icon: destinationIcon}).addTo(map); //
+=======
+    else{ // for destination
+        destinationLat = Number((e.latlng.lat).toFixed(4));
+        destinationLong = Number((e.latlng.lng).toFixed(4));
+
+        L.marker([destinationLat,destinationLong], {icon: destinationIcon}).addTo(map); // 
+>>>>>>> fef87f9144d2f651f0c615d88dae14a17cd60653
     }
 
 }
@@ -148,6 +189,7 @@ function getValues(e){
 //------------------ Toggle Source/Destination ------------------------
 
 function changeValueToDes(){
+<<<<<<< HEAD
 	if(curr == 0)
 	{
 		curr = 1;
@@ -158,6 +200,13 @@ function changeValueToDes(){
 function changeValueToSrc(){
 	curr = 0;
 	flag2=1;
+=======
+    curr = 1;
+}
+
+function changeValueToSrc(){
+    curr = 0;
+>>>>>>> fef87f9144d2f651f0c615d88dae14a17cd60653
 }
 
 //----------------------- Event Listners -----------------------------
@@ -165,6 +214,11 @@ function changeValueToSrc(){
 map.on('click', getValues);
 src.addEventListener('click',changeValueToSrc);
 des.addEventListener('click',changeValueToDes);
+<<<<<<< HEAD
 //deliver.addEventListener('click',moveDrone);
 //console.log(distance);
 //console.log(dist12);
+=======
+deliver.addEventListener('click',moveDrone);
+//console.log(distance);
+>>>>>>> fef87f9144d2f651f0c615d88dae14a17cd60653
